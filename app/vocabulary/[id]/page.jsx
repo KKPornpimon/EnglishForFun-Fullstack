@@ -1,4 +1,12 @@
+
+import { Spoke } from "@mui/icons-material"
 import Image from "next/image"
+
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import HomeIcon from '@mui/icons-material/Home';
+
 
 async function getData(id) {
     const res = await fetch(`http://localhost:3000/api/vocab/${id}`)
@@ -16,14 +24,37 @@ const VocabByid = async ({params}) => {
   return (
     <>
         <div className="container mx-auto p-5">
+            <div className="text-start mb-7">
+                <div role="presentation">
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="inherit" sx={{ display: 'flex', alignItems: 'center' }} href="/">
+                        <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                        HOME
+                        </Link>
+                        <Typography sx={{ color: 'text.primary' }} style={{textTransform: 'capitalize'}}> {data.voc_name} </Typography>
+                    </Breadcrumbs>
+                </div>
+            </div>
+            <div className="flex justify-center items-center mt-4 mb-8">
+                <h1 className="text-4xl font-bold text-blue-600"> Detail Vocabulary </h1>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex justify-center items-center m-4">
                     <Image src={`${data.voc_img}`} alt={data.voc_name} width={400} height={400} className="w-full h-[300px] rounded-lg object-cover" priority />
                 </div>
                 <div className="m-4">
-                    <h1 className="text-6xl font-bold my-4">ชื่อ :: <span className="text-blue-950"> {data.voc_name} </span>  </h1>
-                    <h2 className="text-4xl my-4"> คำแปล :: <span className="text-blue-800"> {data.voc_tran} </span>  </h2>
-                    <h2 className="text-2xl my-4"> ประเภท :: <span className="text-blue-600"> {data.votype_name} </span> </h2>
+                    <div className="flex items-end my-8">
+                        <label className="text-2xl"> ชื่อ </label>  <Spoke color="secondary" className="mx-2" />
+                        <h1 className="text-green-900 text-3xl sm:text-4xl md:text-6xl font-bold capitalize"> {data.voc_name} </h1>  
+                    </div>
+                    <div className="flex items-end my-8"> 
+                        <label className="text-2xl"> คำแปล </label>  <Spoke color="secondary" className="mx-2" /> 
+                        <h2 className="text-green-700 text-3xl sm:text-4xl font-semibold"> {data.voc_tran} </h2>  
+                    </div>
+                    <div className="flex items-end my-8"> 
+                        <label className="text-2xl"> ประเภท </label>  <Spoke color="secondary" className="mx-2" /> 
+                        <h3 className="text-green-500 text-2xl font-bold"> {data.votype_name} </h3> 
+                    </div>
                 </div>
                 
 

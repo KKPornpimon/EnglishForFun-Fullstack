@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono, STIX_Two_Text, Sarabun } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const stix = STIX_Two_Text({
   weight: "400",
@@ -11,15 +13,6 @@ const sarabun = Sarabun({
   subsets: ["latin"],
 })
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata = {
   title: "FullStack Next.js 15 + MySQL",
@@ -33,9 +26,11 @@ export default function RootLayout({ children }) {
         className={`${stix.className} ${sarabun.className} antialiased`}
       >
         <main>
-          <div className="container mx-auto px-5 py-8">
+          <Navbar />
+          <div className="container mx-auto px-6 py-8 min-h-screen">
             {children}
           </div>
+          <Footer />
         </main>
         
       </body>
