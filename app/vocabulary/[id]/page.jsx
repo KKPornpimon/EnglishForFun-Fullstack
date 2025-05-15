@@ -42,16 +42,16 @@ const VocabByid = async ({params}) => {
                 <div className="flex justify-center items-center m-4">
                     <Image src={`${data.voc_img}`} alt={data.voc_name} width={400} height={400} className="w-full h-[300px] rounded-lg object-cover" priority />
                 </div>
-                <div className="m-4">
-                    <div className="flex items-end my-8">
+                <div className="m-4 flex flex-col justify-center items-center sm:items-start sm:justify-start">
+                    <div className="flex items-end sm:mt-8">
                         <label className="text-2xl"> ชื่อ </label>  <Spoke color="secondary" className="mx-2" />
                         <h1 className="text-green-900 text-3xl sm:text-4xl md:text-6xl font-bold capitalize"> {data.voc_name} </h1>  
                     </div>
-                    <div className="flex items-end my-8"> 
+                    <div className="flex items-end mt-4 sm:mt-8"> 
                         <label className="text-2xl"> คำแปล </label>  <Spoke color="secondary" className="mx-2" /> 
                         <h2 className="text-green-700 text-3xl sm:text-4xl font-semibold"> {data.voc_tran} </h2>  
                     </div>
-                    <div className="flex items-end my-8"> 
+                    <div className="flex items-end mt-4 sm:mt-8"> 
                         <label className="text-2xl"> ประเภท </label>  <Spoke color="secondary" className="mx-2" /> 
                         <h3 className="text-green-500 text-2xl font-bold"> {data.votype_name} </h3> 
                     </div>

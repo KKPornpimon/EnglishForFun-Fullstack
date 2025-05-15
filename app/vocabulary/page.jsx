@@ -1,3 +1,5 @@
+
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import VocabSpeaker from "@/utils/VocabSpeaker";
 
 
 async function getData() {
@@ -20,6 +23,8 @@ async function getData() {
 const Vocabulary = async () => {
 
     const data = await getData()
+
+
 
   return (
     <>
@@ -48,9 +53,9 @@ const Vocabulary = async () => {
                             
                         // </div>
                         
-                            <Card key={index} sx={{ maxWidth: 260, borderRadius: '50px', backgroundColor: '#FBF3C1' }} >
+                            <Card key={index} sx={{ maxWidth: 260, borderRadius: '50px', backgroundColor: '#FBF3C1' }}  >
                                 <CardMedia
-                                    sx={{ height: 180 }}
+                                    sx={{ height: 160 }}
                                     image={`${item.voc_img}`}
                                     alt={item.voc_name}
                                     title={item.voc_name}
@@ -63,10 +68,10 @@ const Vocabulary = async () => {
                                         <span className="text-[20px]"> {item.voc_tran} </span>
                                     </Typography>
                                     <div className="flex justify-center items-center mt-2 mb-1">
-                                        <Image src={'/play-icon.png'} alt="icon" width={100} height={100} className="w-[70px] cursor-pointer" priority />
+                                        <VocabSpeaker key={item.voc_id} word={item.voc_name} />
                                     </div>
                                 </CardContent>
-                                <CardActions style={{ justifyContent: 'end', marginRight: '25px' }}>
+                                <CardActions style={{ justifyContent: 'end', marginRight: '25px', paddingTop: '0px' }}>
                                     <Link href={`/vocabulary/${item.voc_id}`} >
                                         <Button size="small"  >
                                             <span  className="inline-block text-right hover:underline-offset-4 hover:underline hover:decoration-emerald-600 hover:text-blue-600 hover:font-semibold transition duration-300"> View More </span> 
